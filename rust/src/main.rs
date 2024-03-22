@@ -10,6 +10,8 @@ use std::collections::HashMap;
 use std::collections::HashSet;
 
 #[allow(unused_imports)]
+use std::vec;
+#[allow(unused_imports)]
 use std::{isize, usize};
 
 #[allow(unused_imports)]
@@ -38,7 +40,135 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc344_a();
+    abc342_a();
+}
+
+#[allow(dead_code)]
+fn abc342_a() {
+    input! {
+        s: String,
+    }
+
+    if s.chars().nth(0) == s.chars().nth(1) {
+        for (i, c) in s.chars().enumerate() {
+            if c != s.chars().nth(0).unwrap() {
+                println!("{}", i + 1);
+                break;
+            }
+        }
+    } else {
+        if s.chars().nth(0) == s.chars().nth(2) {
+            println!("2");
+        } else {
+            println!("1");
+        }
+    }
+}
+
+#[allow(dead_code)]
+fn abc343_b() {
+    input! {
+        n: usize,
+        graph: [[u8; n]; n],
+    }
+
+    for i in 0..n {
+        let mut neighbors = Vec::new();
+        for j in 0..n {
+            if graph[i][j] == 1 {
+                neighbors.push(j + 1);
+            }
+        }
+
+        for neighbor in neighbors {
+            print!("{} ", neighbor);
+        }
+        println!();
+    }
+}
+
+#[allow(dead_code)]
+fn abc343_a() {
+    input! {
+        a: usize,
+        b: usize,
+    }
+
+    let vec_smp = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let sum = a + b;
+
+    for i in vec_smp.into_iter() {
+        if sum != i {
+            println!("{}", i);
+            return;
+        }
+    }
+}
+
+#[allow(dead_code)]
+fn abc345_b() {
+    input! {
+        x: i128,
+    }
+
+    if x % 10 == 0 {
+        println!("{}", x / 10);
+    } else if x >= 0 {
+        println!("{}", x / 10 + 1);
+    } else {
+        println!("{}", x / 10);
+    }
+}
+
+#[allow(dead_code)]
+fn abc345_a() {
+    input! {
+        s: String,
+    }
+
+    if s.len() < 3 {
+        println!("No");
+        return;
+    }
+
+    let bytes = s.as_bytes();
+
+    if bytes[0] != b'<' || bytes[s.len() - 1] != b'>' {
+        println!("No");
+        return;
+    }
+
+    for &b in &bytes[1..s.len() - 1] {
+        if b != b'=' {
+            println!("No");
+            return;
+        }
+    }
+
+    println!("Yes");
+}
+
+#[allow(dead_code)]
+fn abc344_b() {
+    let mut vn: Vec<usize> = Vec::new();
+    loop {
+        input! {
+            n: usize,
+        }
+
+        if n == 0 {
+            vn.push(n);
+            break;
+        } else {
+            vn.push(n);
+        }
+    }
+
+    let rev_vn = vn.iter().rev();
+
+    for v in rev_vn {
+        println!("{}", v);
+    }
 }
 
 #[allow(dead_code)]

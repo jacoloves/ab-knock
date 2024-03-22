@@ -1,5 +1,3 @@
-import Control.Monad(unless)
-
 main :: IO ()
 main = do
   vn <- getInput []
@@ -8,4 +6,4 @@ main = do
 getInput :: [Int] -> IO [Int]
 getInput vn = do
   n <- readLn :: IO Int
-  unless (n == 0) $ getInput (n:vn)
+  unless
