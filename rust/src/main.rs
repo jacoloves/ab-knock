@@ -40,7 +40,90 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc342_a();
+    abc340_a();
+}
+
+#[allow(dead_code)]
+fn abc340_a() {
+    input! {
+        a: usize,
+        b: usize,
+        c: usize,
+    }
+
+    for i in (a..=b).step_by(c) {
+        print!("{} ", i);
+    }
+
+    println!();
+}
+
+#[allow(dead_code)]
+fn abc341_b() {
+    input! {
+        n: usize,
+        mut a: [usize; n],
+        st: [[usize; 2]; n-1],
+    }
+
+    let mut s: Vec<usize> = Vec::new();
+    let mut t: Vec<usize> = Vec::new();
+
+    for i in 0..n - 1 {
+        s.push(st[i][0]);
+        t.push(st[i][1]);
+    }
+
+    for i in 0..n - 1 {
+        a[i + 1] += (a[i] / s[i]) * t[i];
+    }
+
+    println!("{}", a[n - 1]);
+}
+
+#[allow(dead_code)]
+fn abc341_a() {
+    input! {
+        n: usize,
+    }
+
+    let mut s: String = "1".to_string();
+
+    for _ in 0..n {
+        s.push_str("01");
+    }
+
+    println!("{}", s);
+}
+
+#[allow(dead_code)]
+fn abc342_b() {
+    input! {
+        n: usize,
+        p: [usize; n],
+        q: usize,
+        ab: [[usize; 2]; q],
+    }
+
+    let mut v: Vec<usize> = Vec::new();
+    for i in 0..q {
+        let a = ab[i][0];
+        let b = ab[i][1];
+
+        for j in 0..n {
+            if a == p[j] {
+                v.push(a);
+                break;
+            } else if b == p[j] {
+                v.push(b);
+                break;
+            }
+        }
+    }
+
+    for i in v.into_iter() {
+        println!("{}", i);
+    }
 }
 
 #[allow(dead_code)]
