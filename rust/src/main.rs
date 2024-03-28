@@ -40,7 +40,91 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc340_a();
+    abc339_b();
+}
+
+#[allow(dead_code)]
+fn abc339_b() {
+    input! {
+        h: usize,
+        w: usize,
+        mut n: usize,
+    }
+
+    let mut grid: Vec<Vec<char>> = vec![vec!['.'; w]; h];
+
+    let mut x = 0;
+    let mut y = 0;
+    let mut dir = 0;
+
+    while n > 0 {
+        n -= 1;
+
+        if grid[x][y] == '.' {
+            grid[x][y] = '#';
+            dir = (dir + 1) % 4;
+        } else {
+            grid[x][y] = '.';
+            dir = (dir + 3) % 4;
+        }
+
+        if dir == 0 {
+            x = (x - 1 + h) % h;
+        } else if dir == 1 {
+            y = (y + 1) % w;
+        } else if dir == 2 {
+            x = (x + 1) % h;
+        } else {
+            y = (y - 1 + w) % w;
+        }
+    }
+
+    for i in 0..h {
+        for j in 0..w {
+            print!("{}", grid[i][j]);
+        }
+        println!();
+    }
+}
+
+#[allow(dead_code)]
+fn abc339_a() {
+    input! {
+        s: String,
+    }
+
+    let v: Vec<String> = s.split('.').map(|x| x.to_string()).collect();
+
+    println!("{}", v[v.len() - 1]);
+}
+
+#[allow(dead_code)]
+fn abc340_b() {
+    input! {
+        n: usize,
+    }
+
+    let mut v: Vec<usize> = Vec::new();
+    let mut a: Vec<usize> = Vec::new();
+
+    for _ in 0..n {
+        input! {
+            x: usize,
+            y: usize,
+        }
+
+        if x == 1 {
+            v.push(y);
+        } else {
+            v.reverse();
+            a.push(v[y - 1]);
+            v.reverse();
+        }
+    }
+
+    for i in a.into_iter() {
+        println!("{}", i);
+    }
 }
 
 #[allow(dead_code)]
