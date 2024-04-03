@@ -40,7 +40,32 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc339_b();
+    abc338_a();
+}
+
+#[allow(dead_code)]
+fn abc338_a() {
+    input! {
+        s: String,
+    }
+
+    let mut s_cnt = 0;
+
+    for c in s.chars() {
+        if c.is_uppercase() && s_cnt == 0 {
+            s_cnt += 1;
+        }
+
+        if c.is_lowercase() && s_cnt != 0 {
+            s_cnt += 1;
+        }
+    }
+
+    if s_cnt == s.len() {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
 
 #[allow(dead_code)]
