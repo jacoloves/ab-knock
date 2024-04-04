@@ -40,7 +40,121 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc338_a();
+    abc337_b();
+}
+
+#[allow(dead_code)]
+fn abc337_b() {
+    input! {
+        s: String,
+    }
+
+    let mut phase = 0;
+    for c in s.chars() {
+        match phase {
+            0 => {
+                if c == 'A' {
+                    phase = 1;
+                } else {
+                    println!("No");
+                    return;
+                }
+            }
+            1 => {
+                if c == 'B' {
+                    phase = 2;
+                } else if c == 'A' {
+                } else {
+                    println!("No");
+                    return;
+                }
+            }
+            2 => {
+                if c == 'C' {
+                    phase = 3;
+                } else if c == 'B' {
+                } else {
+                    println!("No");
+                    return;
+                }
+            }
+            3 => {
+                if c != 'C' {
+                    println!("No");
+                    return;
+                }
+            }
+            _ => unreachable!(),
+        }
+    }
+
+    if s == "A" {
+        println!("Yes");
+        return;
+    }
+
+    if phase == 3 {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
+}
+
+#[allow(dead_code)]
+fn abc337_a() {
+    input! {
+        n: usize,
+    }
+
+    let mut x = 0;
+    let mut y = 0;
+
+    for _ in 0..n {
+        input! {
+            a: usize,
+            b: usize,
+        }
+
+        x += a;
+        y += b;
+    }
+
+    if x > y {
+        println!("Takahashi");
+    } else if x < y {
+        println!("Aoki");
+    } else {
+        println!("Draw");
+    }
+}
+
+#[allow(dead_code)]
+fn abc338_b() {
+    input! {
+        s: String,
+    }
+
+    let mut mp = HashMap::new();
+
+    for c in s.chars() {
+        *mp.entry(c).or_insert(0) += 1;
+    }
+
+    let mut max_num = -1;
+    let mut max_char = ' ';
+
+    for (&c, &count) in &mp {
+        if max_num < count {
+            max_num = count;
+            max_char = c;
+        } else if max_num == count {
+            if max_char > c {
+                max_char = c;
+            }
+        }
+    }
+
+    println!("{}", max_char);
 }
 
 #[allow(dead_code)]
