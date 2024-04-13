@@ -40,7 +40,26 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc337_b();
+    abc348_a();
+}
+
+#[allow(dead_code)]
+fn abc348_a() {
+    input! {
+        n: usize,
+    }
+
+    let mut ans_str: String = "".to_string();
+
+    for i in 1..=n {
+        if i % 3 == 0 {
+            ans_str.push('x');
+        } else {
+            ans_str.push('o');
+        }
+    }
+
+    println!("{}", ans_str);
 }
 
 #[allow(dead_code)]
