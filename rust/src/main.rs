@@ -40,7 +40,73 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc348_a();
+    abc347_a();
+}
+
+#[allow(dead_code)]
+fn abc347_a() {
+    input! {
+        n: usize,
+        k: usize,
+        a: [usize; n],
+    }
+
+    let mut ans: Vec<usize> = Vec::new();
+
+    for i in a.iter() {
+        if i % k == 0 {
+            ans.push(i / k);
+        }
+    }
+
+    for i in ans.iter() {
+        print!("{} ", i);
+    }
+
+    println!();
+}
+
+#[allow(dead_code)]
+fn sq(x: isize) -> isize {
+    x * x
+}
+
+#[allow(dead_code)]
+fn abc348_b() {
+    input! {
+        n: usize,
+    }
+
+    let mut x: Vec<isize> = Vec::new();
+    let mut y: Vec<isize> = Vec::new();
+
+    for _ in 0..n {
+        input! {
+            a: isize,
+            b: isize,
+        }
+
+        x.push(a);
+        y.push(b);
+    }
+
+    for i in 0..n {
+        let mut m = 0;
+        let mut id = 0;
+
+        for j in 0..n {
+            if i == j {
+                continue;
+            }
+            let d = sq(x[i] - x[j]) + sq(y[i] - y[j]);
+            if d > m {
+                m = d;
+                id = j;
+            }
+        }
+
+        println!("{}", id + 1);
+    }
 }
 
 #[allow(dead_code)]
