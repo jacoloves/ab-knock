@@ -21,4 +21,18 @@ typedef long long ll;
 
 using P = pair<int, int>;
 
-int main() { return 0; }
+int main() { 
+    string inp;
+    cin >> inp;
+
+    set<string> strings;
+
+    for (int i=0; i<inp.size(); i++) {
+        for (int j=1; j<=inp.size() - i; j++) {
+            strings.insert(inp.substr(i, j));
+        }
+    }
+
+    cout << strings.size() << endl;
+    return 0; 
+}
