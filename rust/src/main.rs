@@ -40,7 +40,43 @@ where
 /* ↑AOJ */
 
 fn main() {
-    abc347_a();
+    abc349_a();
+}
+
+#[allow(dead_code)]
+fn abc349_a() {
+    input! {
+        n: usize,
+        v: [isize; n-1],
+    }
+
+    let mut ans = 0;
+
+    for e in v.iter() {
+        ans -= e;
+    }
+
+    println!("{}", ans);
+}
+
+#[allow(dead_code)]
+fn abc347_b() {
+    input! {
+        s: String,
+    }
+
+    let mut ss = HashSet::new();
+
+    let len = s.len();
+
+    for i in 0..len {
+        for j in 1..=len-i {
+            let substr = &s[i..i+j];
+            ss.insert(substr);
+        }
+    }
+
+    println!("{}", ss.len());
 }
 
 #[allow(dead_code)]
