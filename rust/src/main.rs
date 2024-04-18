@@ -44,6 +44,21 @@ fn main() {
 }
 
 #[allow(dead_code)]
+fn abc349_b() {
+    input! {
+        s: String,
+    }
+
+    let mut mp = HashMap::new();
+
+    for c in s.chars() {
+        *mp.entry(c).or_insert(0) += 1;
+    }
+
+    
+}
+
+#[allow(dead_code)]
 fn abc349_a() {
     input! {
         n: usize,
