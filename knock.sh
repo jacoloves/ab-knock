@@ -31,20 +31,21 @@ for ((i = 1; i < $max_num; i++)); do
 	fi
 done
 
-for ((i = 1; i < $max_num; i++)); do
-	for ((j = 0; j < $length; j++)); do
-		char=${alphabet:j:1}
-		connect_py_file="./${py_dir}/${char}-${i}.py"
-		if [ ! -f "$connect_py_file" ]; then
-			cp -p $py_tmp_file $connect_py_file
-			echo "cp -p $py_tmp_file $connect_py_file"
-			py_flag=1
-			break
-		fi
-	done
-	if [ $py_flag -eq 1 ]; then
-		break
-	fi
-done
+#for ((i = 1; i < $max_num; i++)); do
+#	for ((j = 0; j < $length; j++)); do
+#		char=${alphabet:j:1}
+#		connect_py_file="./${py_dir}/${char}-${i}.py"
+#		if [ ! -f "$connect_py_file" ]; then
+#			cp -p $py_tmp_file $connect_py_file
+#			echo "cp -p $py_tmp_file $connect_py_file"
+#			py_flag=1
+#			break
+#		fi
+#	done
+#	if [ $py_flag -eq 1 ]; then
+#		break
+#	fi
+#done
 
 echo "copy done!"
+
