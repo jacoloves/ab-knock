@@ -54,8 +54,6 @@ fn abc349_b() {
     for c in s.chars() {
         *mp.entry(c).or_insert(0) += 1;
     }
-
-    
 }
 
 #[allow(dead_code)]
@@ -85,8 +83,8 @@ fn abc347_b() {
     let len = s.len();
 
     for i in 0..len {
-        for j in 1..=len-i {
-            let substr = &s[i..i+j];
+        for j in 1..=len - i {
+            let substr = &s[i..i + j];
             ss.insert(substr);
         }
     }
