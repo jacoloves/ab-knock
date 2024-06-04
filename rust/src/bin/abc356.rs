@@ -43,9 +43,44 @@ where
 /* ↑AOJ */
 
 fn main() {
-    c();
+    a();
 }
 
+fn a() {
+    input! {
+        n: usize,
+        l: usize,
+        r: usize,
+    }
+
+    let mut a = Vec::new();
+    for i in 1..=n {
+        a.push(i);
+    }
+
+    let mut b = Vec::new();
+    for i in 1..=n {
+        if i >= l && i <= r {
+            b.push(i);
+        }
+    }
+
+    b.sort_by(|a, b| b.cmp(a));
+
+    let mut cnt = 0;
+    for i in 1..=n {
+        if i >= l && i <= r {
+            print!("{} ", b[cnt]);
+            cnt += 1;
+        } else {
+            print!("{} ", a[i - 1]);
+        }
+    }
+
+    println!();
+}
+
+#[allow(dead_code)]
 fn c() {
     input! {
         n: usize,
