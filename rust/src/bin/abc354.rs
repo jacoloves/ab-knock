@@ -29,22 +29,26 @@ use std::str::FromStr;
 use regex::Regex;
 
 fn main() {
-    a()
+    b();
 }
 
-fn a() {
+fn b() {
     input! {
-        h: usize,
+        n: usize,
+        mut scv: [(String, usize); n],
     }
 
+    // Stringの部分で辞書順にソート
+    scv.sort_by_key(|k| k.0.clone());
+
+    // 合計値を計算
     let mut cnt = 0;
-    let mut hight = 0;
-    loop {
-        hight += 2usize.pow(cnt);
-        if hight > h {
-            break;
-        }
-        cnt += 1;
+    for (_, v) in &scv {
+        cnt += v;
     }
-    println!("{}", cnt + 1);
+
+    // nで割った余りを計算
+    let mod_cnt = cnt % n;
+
+    println!("{}", scv[mod_cnt].0.clone());
 }
