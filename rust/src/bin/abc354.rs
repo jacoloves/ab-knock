@@ -29,5 +29,22 @@ use std::str::FromStr;
 use regex::Regex;
 
 fn main() {
-    println!("Hello, world!");
+    a()
+}
+
+fn a() {
+    input! {
+        h: usize,
+    }
+
+    let mut cnt = 0;
+    let mut hight = 0;
+    loop {
+        hight += 2usize.pow(cnt);
+        if hight > h {
+            break;
+        }
+        cnt += 1;
+    }
+    println!("{}", cnt + 1);
 }
