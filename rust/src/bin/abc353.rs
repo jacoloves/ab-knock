@@ -29,7 +29,30 @@ use std::str::FromStr;
 use regex::Regex;
 
 fn main() {
-    a()
+    b()
+}
+
+fn b() {
+    input! {
+        n: usize,
+        k: usize,
+    }
+
+    let mut cnt = 0;
+
+    let mut empty_sheets = k;
+
+    for _ in 0..n {
+        input! { a: usize }
+        if empty_sheets < a {
+            cnt += 1;
+            empty_sheets = k;
+        }
+        empty_sheets -= a;
+    }
+    cnt += 1;
+
+    println!("{cnt}");
 }
 
 fn a() {
