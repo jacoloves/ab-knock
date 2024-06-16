@@ -29,7 +29,26 @@ use std::str::FromStr;
 use regex::Regex;
 
 fn main() {
-    a();
+    b();
+}
+
+fn b() {
+    input! {
+        n: usize,
+        a: usize,
+        t: [usize; n],
+    }
+
+    let mut sum = t[0] + a;
+    for i in 1..n {
+        println!("{sum}");
+        if sum >= t[i] {
+            sum += a;
+        } else {
+            sum = t[i] + a;
+        }
+    }
+    println!("{sum}");
 }
 
 fn a() {
