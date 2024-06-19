@@ -29,7 +29,29 @@ use std::str::FromStr;
 use regex::Regex;
 
 fn main() {
-    a();
+    b();
+}
+
+fn b() {
+    input! {
+        s: String,
+        t: String,
+    }
+
+    let mut num = 0;
+    let mut v = Vec::new();
+    let s_chars: Vec<char> = s.chars().collect();
+
+    for (i, c) in t.char_indices() {
+        if num < s_chars.len() && s_chars[num] == c {
+            v.push(i + 1);
+            num += 1;
+        }
+    }
+
+    for e in v {
+        print!("{} ", e);
+    }
 }
 
 fn a() {
