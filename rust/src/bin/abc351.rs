@@ -29,7 +29,31 @@ use std::str::FromStr;
 use regex::Regex;
 
 fn main() {
-    a();
+    b();
+}
+
+fn b() {
+    input! {
+        n: usize,
+        a: [String; n],
+        b: [String; n],
+    }
+
+    for i in 0..n {
+        if a[i] == b[i] {
+            continue;
+        }
+
+        let mut cnt = 0;
+
+        for (c1, c2) in a[i].chars().zip(b[i].chars()) {
+            cnt += 1;
+            if c1 != c2 {
+                println!("{} {}", i + 1, cnt);
+                return;
+            }
+        }
+    }
 }
 
 fn a() {
