@@ -29,7 +29,29 @@ use std::str::FromStr;
 use regex::Regex;
 
 fn main() {
-    a();
+    b();
+}
+
+fn b() {
+    input! {
+        mut n: usize,
+        q: usize,
+        t: [usize; q],
+    }
+
+    let mut hm = HashMap::new();
+
+    for i in t {
+        *hm.entry(i).or_insert(0) += 1;
+    }
+
+    for (_, v) in hm.iter() {
+        if v % 2 != 0 {
+            n -= 1;
+        }
+    }
+
+    println!("{}", n);
 }
 
 fn a() {
