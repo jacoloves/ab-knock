@@ -23,9 +23,12 @@ use std::io::*;
 #[allow(unused_imports)]
 use std::str::*;
 
+#[allow(unused_imports)]
 use std::fmt::Debug;
+#[allow(unused_imports)]
 use std::str::FromStr;
 
+#[allow(unused_imports)]
 use regex::Regex;
 
 fn main() {
